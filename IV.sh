@@ -9,8 +9,8 @@ nrSwithes=$(grep -s "nr_switches" "/proc/"$pid"/sched" | grep -E -o "[0-9]+")
 
 if [[ -n $nrSwithes ]]
 then
-art=$(bc <<< "$sumExecRuntime/$nrSwithes")
+art=$(echo "scale=2; $sumExecRuntime / $nrSwithes" | bc -l)
 echo "ProcessID=$pid : Parent_ProcessID=$ppid : Average_Running_Time=$art"
 fi
-done | sort -n -t = -k 3 > ansIV
+done | sort -n -t = -k 3 > "ansIV"
 
