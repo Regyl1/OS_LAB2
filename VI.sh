@@ -19,6 +19,6 @@ vmSize=$(cat "tempVI" | grep $maxPID | awk '{print $5}')
 
 echo "PID with max VmSize:$maxPID"
 echo "MEM in /proc $maxSize"
-echo "MEM in top $maxSize"
+echo "MEM in top $vmSize"
 
 rm "tempVI"

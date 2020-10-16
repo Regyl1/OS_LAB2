@@ -1,4 +1,8 @@
 #!/usr/bin/bash
 
-ps a -u user o user | grep -c "user" | awk '{print $1}'> "ansI"
-ps a -u user o user,pid,command | grep "user" | awk '{print $2 ":" $3 }' >> "ansI"
+lines=$(ps a -u user o user,pid,command)
+count=$(echo "$lines" | grep -c "user")
+
+echo $(($count-2)) > "ansI"
+echo "$lines" | tail -n $count | head -n $(($count-2)) | awk '{print $2 ":" $3}' >> "ansI"
+
