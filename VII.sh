@@ -10,7 +10,7 @@ then
 echo "$pid $cmd $pastReadBytes"
 fi
 done > "tempVII"
-
+sleep 1m
 for i in $(ps -A o pid,command | awk '{print $1":"$2}' )
 do
 pid=$(echo $i | cut -d ":" -f 1)
